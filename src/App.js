@@ -5,6 +5,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 
 import React from 'react';
+import react from 'react';
 
 const defaultTodo =[
   { text: 'Cortar', completed: true},
@@ -14,10 +15,17 @@ const defaultTodo =[
 ];
 
 function App() {
+  const [searchValue, setSearchValue]= react.useState('');
+  console.log(searchValue);
+  const [todos,setTodos]= react.useState(defaultTodo);
+
+  const completedTodos = todos.filter(todos => todos.completed).length;
+  const totalTodos = todos.length;
+
   return (
     <React.Fragment>
-          <TodoCounter completed={5} total={10}/>
-          <TodoSearch/>
+          <TodoCounter completed={completedTodos} total={totalTodos}/>
+          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
           <TodoList>
             {defaultTodo.map(
               todo =>(<TodoItem 
