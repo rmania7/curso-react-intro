@@ -7,7 +7,7 @@ function TodoSearch({searchValue,setSearchValue}){
      value={searchValue}
      onChange = {(event)=>{
         console.log('escribiste en todoSearch');
-        setSearchValue(event.target.value);
+        setSearchValue(event.target.value); //target es el propio objeto
      }
      }
      />
