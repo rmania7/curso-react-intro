@@ -16,27 +16,39 @@ import react from 'react';
   // ];
   // const stringifyTodos = JSON.stringify(defaultTodos);
   
-  // localStorage.setItem('TODOS_V1', stringifyTodos);
-  
+  // localStorage.setItem(itenName, stringifyTodos);
 
-function App() {
-//localStorage
-const localStorageTodos = localStorage.getItem('TODOS_V1');
-let parsedTodos;
-if(!localStorageTodos){ // si no tiene datos genero un array vacio
-  localStorage.setItem('TODOS_V1', JSON.stringify([]));
-} else {
-  parsedTodos = JSON.parse(localStorageTodos);
+function useLocalStorage(itenName,initialValue){
+    //localStorage
+    // se crea un nuevo Estado
+    const localStorageItem = localStorage.getItem(itenName);
+    
+    let parsedTodos;
+    
+    if(!localStorageItem){ // si no tiene datos genero un array vacio
+      localStorage.setItem(itenName, JSON.stringify(initialValue));
+      parsedTodos=initialValue;
+    } else {
+      parsedTodos = JSON.parse(localStorageItem);
+    }
+
+    const [item,setItem]= react.useState();
+
+    const saveItem = (newItem) =>{
+      localStorage.setItem(itenName, JSON.stringify(newItem));
+      setItem(newItem);
+    }
+    // fin localStorage
+    return [item, saveItem];
 }
 
+function App() {
 
-
-// fin localStorage
 
   //creacion de un ESTADO que viene del evento todoSearch.js onChange 
-  const [searchValue, setSearchValue]= react.useState('');
+  const [searchValue, setSearchValue]= react.useState(''); 
   console.log(searchValue); //ocurre en todoSearch
-  const [todos,setTodos]= react.useState(parsedTodos);// ESTADO para saber -todos- terminados y totales. "defaultTodos" cambia si quieres el array por defaul-
+  const [todos,saveTodos]= useLocalStorage('TODOS_V1',[]);// ESTADO para saber -todos- terminados y totales. "defaultTodos" cambia si quieres el array por defaul-
 
   const completedTodos = todos.filter(todos => todos.completed).length; //-todos- terminados
   const totalTodos = todos.length;//total -todos-
@@ -50,10 +62,7 @@ if(!localStorageTodos){ // si no tiene datos genero un array vacio
       return todoText.includes(searchText);}
     );
 
-  const saveTodos = (newTodos) =>{
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  }
+
   
   const completeTodos = (text)=> {
     const newTodos = [...todos]; // crea copia de array -todos-
