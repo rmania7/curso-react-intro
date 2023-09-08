@@ -1,11 +1,9 @@
+import react from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
-
-import React from 'react';
-import react from 'react';
 
 //crea un array para iniciar 
   // const defaultTodos =[
@@ -23,16 +21,16 @@ function useLocalStorage(itenName,initialValue){
     // se crea un nuevo Estado
     const localStorageItem = localStorage.getItem(itenName);
     
-    let parsedTodos;
+    let parsedItem;
     
     if(!localStorageItem){ // si no tiene datos genero un array vacio
       localStorage.setItem(itenName, JSON.stringify(initialValue));
-      parsedTodos=initialValue;
+      parsedItem=initialValue;
     } else {
-      parsedTodos = JSON.parse(localStorageItem);
+      parsedItem = JSON.parse(localStorageItem);
     }
 
-    const [item,setItem]= react.useState();
+    const [item, setItem]= react.useState(parsedItem);
 
     const saveItem = (newItem) =>{
       localStorage.setItem(itenName, JSON.stringify(newItem));
@@ -78,7 +76,7 @@ function App() {
   }
 
   return (
-    <React.Fragment>
+    <react.Fragment>
           <TodoCounter completed={completedTodos} total={totalTodos}/>
           <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
           <TodoList>
@@ -95,7 +93,7 @@ function App() {
           </TodoList> 
           <CreateTodoButton/>   
       
-    </React.Fragment>
+    </react.Fragment>
   );
 }
 
