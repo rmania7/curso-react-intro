@@ -1,9 +1,10 @@
 import react from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { useLocalStorage } from './useLocalStorage';
 
 //crea un array para iniciar 
   // const defaultTodos =[
@@ -16,29 +17,7 @@ import { CreateTodoButton } from './CreateTodoButton';
   
   // localStorage.setItem(itenName, stringifyTodos);
 
-function useLocalStorage(itenName,initialValue){
-    //localStorage
-    // se crea un nuevo Estado
-    const localStorageItem = localStorage.getItem(itenName);
-    
-    let parsedItem;
-    
-    if(!localStorageItem){ // si no tiene datos genero un array vacio
-      localStorage.setItem(itenName, JSON.stringify(initialValue));
-      parsedItem=initialValue;
-    } else {
-      parsedItem = JSON.parse(localStorageItem);
-    }
 
-    const [item, setItem]= react.useState(parsedItem);
-
-    const saveItem = (newItem) =>{
-      localStorage.setItem(itenName, JSON.stringify(newItem));
-      setItem(newItem);
-    }
-    // fin localStorage
-    return [item, saveItem];
-}
 
 function App() {
 
@@ -50,7 +29,7 @@ function App() {
 
   const completedTodos = todos.filter(todos => todos.completed).length; //-todos- terminados
   const totalTodos = todos.length;//total -todos-
-  if (completedTodos == totalTodos) console.log("felicidades todo COMPLETO");
+
 
   //hace la busqueda de -todos- para filtrar los por lo escrito en el input
   const searchedTodos =  todos.filter(
