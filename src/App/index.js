@@ -21,7 +21,11 @@ function App() {
   //creacion de un ESTADO que viene del evento todoSearch.js onChange 
   const [searchValue, setSearchValue]= react.useState(''); 
   console.log(searchValue); //ocurre en todoSearch
-  const [todos,saveTodos]= useLocalStorage('TODOS_V1',[]);// ESTADO para saber -todos- terminados y totales. "defaultTodos" cambia si quieres el array por defaul-
+  const {item: todos, // [] a {} y se hace un AS : para seguir usando el mismo nombre
+    saveItem: saveTodos,
+    loading,
+    error,
+  }= useLocalStorage('TODOS_V1',[]);// ESTADO para saber -todos- terminados y totales. "defaultTodos" cambia si quieres el array por defaul-
 
   const completedTodos = todos.filter(todos => todos.completed).length; //-todos- terminados
   const totalTodos = todos.length;//total -todos-
@@ -51,7 +55,9 @@ function App() {
   }
 //interfaz grafica
   return (
-    <AppUI 
+    <AppUI
+    loading={loading}
+    error={error} 
     completedTodos={completedTodos}
     totalTodos={totalTodos}
     searchValue={searchValue}
