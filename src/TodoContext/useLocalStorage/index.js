@@ -36,3 +36,14 @@ function useLocalStorage(itenName,initialValue){
     return {item, saveItem, error, loading}; // return [item, saveItem];
 }
 export { useLocalStorage };
+
+//crea un array para iniciar 
+  // const defaultTodos =[
+  //   { text: 'Cortar', completed: true},
+  //   { text: 'Pelar', completed: false},
+  //   { text: 'Correr', completed: true},
+  //   { text: 'picar', completed: false},
+  // ];
+  // const stringifyTodos = JSON.stringify(defaultTodos);
+  
+  // localStorage.setItem(itenName, stringifyTodos);
