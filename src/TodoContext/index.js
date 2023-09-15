@@ -5,7 +5,10 @@ const TodoContext = react.createContext();
 
 function TodoProvider({ children }){
         //creacion de un ESTADO que viene del evento todoSearch.js onChange 
-    const [searchValue, setSearchValue]= react.useState(''); 
+        const [searchValue, setSearchValue]= react.useState(''); 
+    
+        const [openModal, setOpenModal]= react.useState(false); 
+
     console.log(searchValue); //ocurre en todoSearch
     const {item: todos, // [] a {} y se hace un AS : para seguir usando el mismo nombre
         saveItem: saveTodos,
@@ -42,20 +45,22 @@ function TodoProvider({ children }){
     }
 
     return (
-    <TodoContext.Provider value={{
-        error,
-        loading,
-        completedTodos,
-        totalTodos,
-        searchValue,
-        setSearchValue,
-        searchedTodos,
-        completeTodos,
-        deleteTodos,
+        <TodoContext.Provider value={{
+          loading,
+          error,
+          completedTodos,
+          totalTodos,
+          searchValue,
+          setSearchValue,
+          searchedTodos,
+          completeTodos,
+          deleteTodos,
+          openModal,
+          setOpenModal,
         }}>
-            { children }
-    </TodoContext.Provider>
-    )
-}
-
-export { TodoContext, TodoProvider }; 
+          {children}
+        </TodoContext.Provider>
+      );
+    }
+    
+    export { TodoContext, TodoProvider };
