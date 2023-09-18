@@ -43,6 +43,12 @@ function TodoProvider({ children }){
         saveTodos(newTodos);
 
     }
+    const addTodo = (text)=>{
+      const newTodos = [...todos]; // crea copia de array -todos-
+      newTodos.push({text,completed: false});
+      saveTodos(newTodos);
+
+    }
 
     return (
         <TodoContext.Provider value={{
@@ -57,6 +63,7 @@ function TodoProvider({ children }){
           deleteTodos,
           openModal,
           setOpenModal,
+          addTodo,
         }}>
           {children}
         </TodoContext.Provider>

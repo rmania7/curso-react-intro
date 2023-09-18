@@ -9,6 +9,7 @@ import { TodosEmpty } from '../TodosEmpty';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { TodoContext } from '../TodoContext';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 function AppUI({
     // Props de ser el caso
 }){
@@ -47,7 +48,11 @@ function AppUI({
                     ))}
                 </TodoList>
               <CreateTodoButton setOpenModal={setOpenModal}/>
-              {openModal && (<Modal>forma aqui</Modal>)}
+              {openModal && (
+                      <Modal>
+                        <TodoForm />
+                      </Modal>
+                )}
                          
         </react.Fragment>
       );
