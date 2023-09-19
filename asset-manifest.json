@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rmania7/curso-react-intro/static/css/main.b3bbf67f.css",
-    "main.js": "/rmania7/curso-react-intro/static/js/main.e38d8d35.js",
-    "index.html": "/rmania7/curso-react-intro/index.html",
-    "static/media/delete.svg": "/rmania7/curso-react-intro/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
-    "static/media/check.svg": "/rmania7/curso-react-intro/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
-    "main.b3bbf67f.css.map": "/rmania7/curso-react-intro/static/css/main.b3bbf67f.css.map",
-    "main.e38d8d35.js.map": "/rmania7/curso-react-intro/static/js/main.e38d8d35.js.map"
+    "main.css": "/curso-react-intro/static/css/main.b3bbf67f.css",
+    "main.js": "/curso-react-intro/static/js/main.c850cc46.js",
+    "index.html": "/curso-react-intro/index.html",
+    "static/media/delete.svg": "/curso-react-intro/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
+    "static/media/check.svg": "/curso-react-intro/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
+    "main.b3bbf67f.css.map": "/curso-react-intro/static/css/main.b3bbf67f.css.map",
+    "main.c850cc46.js.map": "/curso-react-intro/static/js/main.c850cc46.js.map"
   },
   "entrypoints": [
     "static/css/main.b3bbf67f.css",
-    "static/js/main.e38d8d35.js"
+    "static/js/main.c850cc46.js"
   ]
 }
